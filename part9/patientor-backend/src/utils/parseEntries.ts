@@ -31,7 +31,7 @@ const parseDate = (date: unknown): string => {
 };
 
 const parseHealthCheckRating = (healthCheckRating: unknown): HealthCheckRating => {
-    if(!healthCheckRating || !isNumber(healthCheckRating) || !isHealthCheckRating(healthCheckRating)){
+    if(!isNumber(healthCheckRating) || !isHealthCheckRating(healthCheckRating)){
         throw new Error ('Incorrect or missing Health Check rating: ' + healthCheckRating);
     }
     return healthCheckRating;
