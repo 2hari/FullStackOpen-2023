@@ -45,15 +45,10 @@ const parseSpecialist = (specialist: unknown): string => {
 };
 
 const parseDiagnosisCodes = (object: unknown): Array<Diagnose['code']> =>  {
-    if (!object || typeof object !== 'object' ) {
+    if (!object || typeof object !== 'object') {
       return [] as Array<Diagnose['code']>;
     }
-
-    if('diagnosisCodes' in object){
-        return object.diagnosisCodes as Array<Diagnose['code']>;
-    }
-
-    return ['Z57.1'] as Array<Diagnose['code']>;
+    return object as Array<Diagnose['code']>;
 };
 
 const parseSickLeave = (object: unknown): SickLeave => {
@@ -100,8 +95,6 @@ const parseNewEntryData = (object: unknown): EntryWithoutId => {
     }
     if('description' in object && 'date' in object && 'specialist' in object){
     
-    console.log(object,'raw-body-object');
-    console.log(parseDiagnosisCodes('diagnosisCodes' in object ? parseDiagnosisCodes(object.diagnosisCodes) : 'no-diagnosesCode'));
     const newBaseEntry: NewBaseEntry = 'diagnosisCodes' in object ?
     { description: parseDescription(object.description), date: parseDate(object.date), specialist: parseSpecialist(object.specialist), diagnosisCodes: parseDiagnosisCodes(object.diagnosisCodes) } : 
     { description: parseDescription(object.description), date: parseDate(object.date), specialist: parseSpecialist(object.specialist)};
