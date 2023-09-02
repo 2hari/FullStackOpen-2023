@@ -12,6 +12,6 @@ Attempting Fullstack Typescript & DevOps module of course [Full Stack Open 2023]
 
 - Background and Introduction
 - First Steps with Typescript
-- Typing express app
+- Typing Node Express app
 - React with types 
 - E2E Fullstack typescript
