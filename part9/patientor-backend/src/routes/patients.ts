@@ -35,7 +35,6 @@ router.post('/:id/entries', (req, res) => {
             res.status(404).send('Patient not found');
             return;
         }
-        console.log(req.body,'REQUEST_BODY');
         const parsedNewEntryData = parseNewEntryData(req.body);
         const newEntry = patientService.addNewEntry(patient, parsedNewEntryData);
         res.json(newEntry);

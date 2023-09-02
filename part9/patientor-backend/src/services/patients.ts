@@ -27,7 +27,6 @@ const addNewPatient = (newPatientData: NewPatient): Patient => {
 
 const addNewEntry = (patient: Patient, entryData: EntryWithoutId): Entry => {
     const id = uuid();
-    console.log(entryData);
     const newEntry = { id, ...entryData };
     patient.entries.push(newEntry);
     return newEntry;
