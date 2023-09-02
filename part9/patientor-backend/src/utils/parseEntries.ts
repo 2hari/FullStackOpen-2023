@@ -65,7 +65,7 @@ const parseSickLeave = (object: unknown): SickLeave => {
 
 const parseEmployerName = (employerName: unknown): string => {
     if(!employerName || !isString(employerName)){
-        throw new Error('Incorrect or missing description');
+        throw new Error('Incorrect or missing employer name');
     }
     return employerName;
 };
