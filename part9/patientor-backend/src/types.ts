@@ -16,6 +16,7 @@ export interface Patient {
 
 export type NoSsnPatient = Omit<Patient, 'ssn'>;
 export type NewPatient = Omit<Patient, 'id'>;
+export type NonSensitivePatient = Omit<Patient, 'ssn' | 'entries'>;
 
 export enum Gender {
     Female = 'female',
@@ -61,5 +62,8 @@ export interface HealthCheckEntry extends BaseEntry {
     healthCheckRating: HealthCheckRating;
 }
 
-export type Entry = | HospitalEntry | OccupationalHealthcareEntry | HealthCheckEntry;
-  
+type UnionOmit<T, K extends string | number | symbol> = T extends unknown ? Omit<T, K> : never;
+
+export type Entry =  HospitalEntry | OccupationalHealthcareEntry | HealthCheckEntry;
+export type EntryWithoutId = UnionOmit<Entry, 'id'>;
+export type NewBaseEntry = Omit<BaseEntry, 'id'>;  
